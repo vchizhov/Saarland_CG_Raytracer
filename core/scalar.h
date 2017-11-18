@@ -23,6 +23,10 @@ T min(T a, T b, T c) { return min(min(a,b),c); }
 template <typename T>
 T max(T a, T b, T c) { return max(max(a,b),c); }
 
+// Clamps a value in the range [a,b]
+template <typename T>
+T clamp(T a, T b, T x) { return max(a, min(x, b)); }
+
 // Computes a square of
 template <typename T>
 T sqr(const T& a) { return a*a; }

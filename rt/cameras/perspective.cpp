@@ -16,8 +16,8 @@ namespace rt
 		// basisY = basisZ x basisX
 		this->up = cross(this->forward, right);
 		// we fix the distance from the center to the screen to 1, then we can calculate the scale:
-		scaleX = tanf(verticalOpeningAngle*0.5f);
-		scaleY = tanf(horizontalOpeningAngle*0.5f);
+		scaleX = tanf(horizontalOpeningAngle*0.5f);
+		scaleY = tanf(verticalOpeningAngle*0.5f);
 	}
 
 	//expects ndc coordinates
@@ -25,6 +25,6 @@ namespace rt
 	{
 		// we use -z like in OpenGL
 		Vector dir = -forward + x*scaleX*right + y*scaleY*up;
-		return Ray(center, dir.normalize());
+		return Ray(center+dir, dir.normalize());
 	}
 }

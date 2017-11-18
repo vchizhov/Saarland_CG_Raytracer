@@ -14,6 +14,7 @@ class Integrator;
 class Renderer {
 private:
 	void test_render2_thread(Image& img, uint x0, uint x1, uint y0, uint y1);
+	void render_thread(Image& img, uint x0, uint x1, uint y0, uint y1);
 public:
     Renderer(Camera* cam, Integrator* integrator);
 	~Renderer();

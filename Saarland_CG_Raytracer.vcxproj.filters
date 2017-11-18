@@ -13,6 +13,15 @@
     <Filter Include="rt\cameras">
       <UniqueIdentifier>{38bd8c9b-f98c-4ded-8057-97463cdb7b70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rt\groups">
+      <UniqueIdentifier>{3c6f9b6a-19e2-410f-a3a3-ec2e4bc4ff55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rt\integrators">
+      <UniqueIdentifier>{6c27b8c9-328b-49ac-88db-a2bfc8f5c66a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rt\solids">
+      <UniqueIdentifier>{c84928e0-8541-4986-9b2b-71175051938a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rt\ray.h">
@@ -60,6 +69,57 @@
     <ClInclude Include="core\scalar.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="rt\bbox.h">
+      <Filter>rt</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\intersection.h">
+      <Filter>rt</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\primitive.h">
+      <Filter>rt</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\world.h">
+      <Filter>rt</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\group.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\simplegroup.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\integrators\casting.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\integrators\castingdist.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\integrators\integrator.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\aabox.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\disc.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\infiniteplane.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\quad.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\solid.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\sphere.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\triangle.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\solids\quadric.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt\renderer.cpp">
@@ -103,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="core\scalar.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_solids.cpp">
+      <Filter>main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
