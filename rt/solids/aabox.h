@@ -22,7 +22,7 @@ public:
 
 	virtual BBox getBounds() const
 	{
-		return BBox();
+		return BBox(min, max);
 	}
 	virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 	{

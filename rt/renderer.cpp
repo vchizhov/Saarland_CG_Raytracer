@@ -3,6 +3,7 @@
 #include <core/image.h> //RGBColor
 #include <rt/cameras/camera.h> //Camera
 #include <rt/integrators/integrator.h>
+#include <iostream>
 
 float a1computeWeight(float fx, float fy, const rt::Point& c, float div);
 rt::RGBColor a1computeColor(rt::uint x, rt::uint y, rt::uint width, rt::uint height);

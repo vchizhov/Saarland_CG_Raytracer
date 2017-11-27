@@ -1,0 +1,32 @@
+Median kd-tree, max height 20:
+build: 0.0832191
+r1: 0.270819
+r2: 0.12397
+
+build: 0.07891
+r1: 0.281946
+r2: 0.176536
+
+build: 0.0808071
+r1: 0.266736
+r2: 0.188921
+
+average number of primitives per leaf ~ 8.6
+maximum number of primitives in a single leaf: 85
+
+
+SAH kd-tree, max height 20:
+build: 0.531622
+r1: 0.194167
+r2: 0.0979437
+
+build: 0.525072
+r1: 0.178102
+r2: 0.127345
+
+build: 0.527105
+r1: 0.192645
+r2: 0.128025
+
+average number of primitives per leaf ~ 4.61344
+maximum number of primitives in a single leaf: 24

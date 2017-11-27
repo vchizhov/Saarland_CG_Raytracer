@@ -2,13 +2,13 @@
 #define CG1RAYTRACER_VECTOR_HEADER
 
 #include <core/macros.h>
+#include <core/scalar.h>//for min and max
 #include <math.h>
-#include <iostream>
+#include <ostream>
 
 namespace rt {
-
-class Float4;
 class Point;
+class Float4;
 class ALIGN(16) Vector {
 public:
     float x, y, z;
@@ -72,6 +72,7 @@ Vector max(const Vector& a, const Vector& b);
 Vector compMul(const Vector& a, const Vector& b);
 
 Point operator+(const Point& a, const Vector& b);
+
 // what's vector + point supposed to mean geometrically?
 Point operator+(const Vector& a, const Point& b);
 Point operator-(const Point& a, const Vector& b);
@@ -79,6 +80,16 @@ Point operator-(const Point& a, const Vector& b);
 std::ostream& operator<<(std::ostream& os, const Vector& v);
 
 Point operator*(const Float4& scale, const Point& p);
+
+Vector operator-(const Point& a, const Point& b);
+
+Vector perp(const Vector& a);
+
+template<>
+Vector min(const Vector& a, const Vector& b);
+
+template<>
+Vector max(const Vector& a, const Vector& b);
 
 }
 

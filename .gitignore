@@ -2,7 +2,14 @@
 /.vs
 /.git
 *.zip
+<<<<<<< HEAD
 .gitignore
 models/
 CMakeLists.txt
 *.cmake
+=======
+models/
+*.cmake
+CMakeLists.txt
+.gitignore
+>>>>>>> a3

@@ -20,7 +20,9 @@ namespace rt {
 
 		virtual BBox getBounds() const
 		{
-			return BBox();
+			// the spheroid can be bounded also some of the other quadrics can be restricted to only a part of space
+			// but I'll just return a full box since all of the cases are special cases
+			return BBox::full();
 		}
 		virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 		{
