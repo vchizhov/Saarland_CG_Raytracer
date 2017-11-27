@@ -3,3 +3,5 @@
 /.git
 *.zip
 models/
+*.cmake
+CMakeLists.txt
