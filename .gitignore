@@ -5,3 +5,4 @@
 models/
 *.cmake
 CMakeLists.txt
+.gitignore
