@@ -3,11 +3,12 @@
 
 #include <rt/solids/solid.h>
 #include <rt/intersection.h>
+#include <rt/bbox.h>
 
 namespace rt {
 
 class Triangle : public Solid {
-private:
+public:
 	Point v1, v2, v3;
 public:
     Triangle() {}
@@ -24,7 +25,9 @@ public:
 
 	virtual BBox getBounds() const
 	{
-		return BBox();
+		Point min = rt::min(v1, v2, v3);
+		Point max = rt::max(v1, v2, v3);
+		return BBox(min, max);
 	}
 	virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 	{

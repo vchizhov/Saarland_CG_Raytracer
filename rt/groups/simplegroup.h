@@ -10,16 +10,17 @@ namespace rt {
 class SimpleGroup : public Group {
 private:
 	std::vector<Primitive*> primitives;
-
+	BBox bbox;
 public:
-	~SimpleGroup()
+	
+	virtual ~SimpleGroup()
 	{
-		for (uint i = 0; i < primitives.size(); ++i)
-			delete primitives[i];
+		//for (uint i = 0; i < primitives.size(); ++i)
+		//	delete primitives[i];
 	}
 	virtual BBox getBounds() const
 	{
-		return BBox();
+		return bbox;
 	}
 	virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 	{
@@ -46,6 +47,7 @@ public:
     virtual void add(Primitive* p)
 	{
 		primitives.push_back(p);
+		bbox.extend(p->getBounds());
 	}
 	virtual void setMaterial(Material* m)
 	{

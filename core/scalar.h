@@ -7,21 +7,32 @@
 
 namespace rt {
 
-using std::min;
-using std::max;
-//template <typename T>
-//T min(T a, T b) { return a<b?a:b; }
+// definition of min and max for arbitrary number of arguments
+template<typename T, typename...Args>
+T min(const T& a, const Args&...args)
+{
+	return min(a, min(args...));
+}
 
-//template <typename T>
-//T max(T a, T b) { return a>b?a:b; }
+template<typename T, typename...Args>
+T max(const T& a, const Args&...args)
+{
+	return max(a, max(args...));
+}
 
-// Computes the minimum of 3 values of any type
-template <typename T>
-T min(T a, T b, T c) { return min(min(a,b),c); }
+// base case for PODs, for more complex types like vector and point a specialization is necessary
+template<typename T>
+T min(const T& a, const T& b)
+{
+	return (a < b) ? a : b;
+}
 
-// Computes the maximum of 3 values of any type
-template <typename T>
-T max(T a, T b, T c) { return max(max(a,b),c); }
+template<typename T>
+T max(const T& a, const T& b)
+{
+	return (b < a) ? a : b;
+}
+
 
 // Clamps a value in the range [a,b]
 template <typename T>

@@ -22,6 +22,9 @@
     <Filter Include="rt\solids">
       <UniqueIdentifier>{c84928e0-8541-4986-9b2b-71175051938a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rt\loaders">
+      <UniqueIdentifier>{90d612ce-b4e8-4630-9a5d-18a67d625235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rt\ray.h">
@@ -120,6 +123,24 @@
     <ClInclude Include="rt\solids\quadric.h">
       <Filter>rt\solids</Filter>
     </ClInclude>
+    <ClInclude Include="rt\groups\kdtree.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\loaders\obj.h">
+      <Filter>rt\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\median_kdtree.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\btree_info.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\sah_kdtree.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\groups\bvh.h">
+      <Filter>rt\groups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt\renderer.cpp">
@@ -146,19 +167,10 @@
     <ClCompile Include="main\main.cpp">
       <Filter>main</Filter>
     </ClCompile>
-    <ClCompile Include="core\vector.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
     <ClCompile Include="core\color.cpp">
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="core\image.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="core\julia.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="core\point.cpp">
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="core\scalar.cpp">
@@ -166,6 +178,30 @@
     </ClCompile>
     <ClCompile Include="main\a_solids.cpp">
       <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_indexing.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="core\point.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\vector.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\julia.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\loaders\obj.cpp">
+      <Filter>rt\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\groups\median_kdtree.cpp">
+      <Filter>rt\groups</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\groups\btree_info.cpp">
+      <Filter>rt\groups</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\groups\sah_kdtree.cpp">
+      <Filter>rt\groups</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

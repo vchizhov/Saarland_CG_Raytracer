@@ -60,5 +60,33 @@ namespace rt
 		return os;
 	}
 
-	Point operator*(const Float4& scale, const Point& p);
+	Vector operator-(const Point& a, const Point& b)
+	{
+		return Vector(a.x - b.x, a.y - b.y, a.z - b.z);
+	}
+
+	Vector perp(const Vector& a)
+	{
+		float fx = fabsf(a.x);
+		float fy = fabsf(a.y);
+		float fz = fabsf(a.z);
+		if ((fx > fy && fx > fz) || (fy > fx && fy > fz))
+			return Vector(a.y, -a.x, 0.0f);
+		else if (fz != 0.0f)
+			return Vector(-a.z, 0.0f, a.x);
+		else
+			return Vector::rep(0.0f);
+	}
+
+	template<>
+	Vector min(const Vector& a, const Vector& b)
+	{
+		return Vector(a.x < b.x ? a.x : b.x, a.y < b.y ? a.y : b.y, a.z < b.z ? a.z : b.z);
+	}
+
+	template<>
+	Vector max(const Vector& a, const Vector& b)
+	{
+		return Vector(a.x > b.x ? a.x : b.x, a.y > b.y ? a.y : b.y, a.z > b.z ? a.z : b.z);
+	}
 }

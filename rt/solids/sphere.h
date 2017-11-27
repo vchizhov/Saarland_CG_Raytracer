@@ -13,6 +13,7 @@ private:
 	float radius;
 public:
     Sphere() {}
+	// a negative radius makes sense if we want to have a "flipped" sphere, where the normals are flipped
 	Sphere(const Point& center, float radius, CoordMapper* texMapper, Material* material)
 		: center(center), radius(radius), Solid(texMapper, material)
 	{
@@ -21,7 +22,8 @@ public:
 
 	virtual BBox getBounds() const
 	{
-		return BBox();
+		// the fabsf is in the case that we want a "flipped" sphere
+		return BBox(center-Vector::rep(fabsf(radius)), center+Vector::rep(fabsf(radius)));
 	}
 	virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 	{
