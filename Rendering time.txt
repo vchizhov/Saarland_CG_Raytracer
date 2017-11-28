@@ -1,3 +1,4 @@
+Cow + 3 spheres:
 Median kd-tree, max height 20:
 build: 0.0832191
 r1: 0.270819
@@ -30,3 +31,24 @@ r2: 0.128025
 
 average number of primitives per leaf ~ 4.61344
 maximum number of primitives in a single leaf: 24
+
+
+Stanford rabbit:
+SAH kd-tree, max height 20:
+build: 0.0984608
+r: 0.058688
+
+Median kd-tree, max height 20:
+build: 0.0126691
+r: 0.236879
+
+
+Stanford dragon:
+SAH kd-tree, max height 20:
+build: 1.45453
+r: 0.215801
+
+Median kd-tree, max height 20:
+build: 0.284781
+r: 0.293495
+
