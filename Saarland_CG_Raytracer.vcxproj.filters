@@ -25,6 +25,9 @@
     <Filter Include="rt\loaders">
       <UniqueIdentifier>{90d612ce-b4e8-4630-9a5d-18a67d625235}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rt\primmod">
+      <UniqueIdentifier>{723965ca-5256-4473-a3ac-156abb8feabe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rt\ray.h">
@@ -141,6 +144,18 @@
     <ClInclude Include="rt\groups\bvh.h">
       <Filter>rt\groups</Filter>
     </ClInclude>
+    <ClInclude Include="core\matrix.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\float4.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\primmod\instance.h">
+      <Filter>rt\primmod</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\integrators\montecarlo.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt\renderer.cpp">
@@ -202,6 +217,15 @@
     </ClCompile>
     <ClCompile Include="rt\groups\sah_kdtree.cpp">
       <Filter>rt\groups</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_instancing.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="core\matrix.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\float4.cpp">
+      <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -26,7 +26,6 @@ namespace rt
 			float maxz = currPrim->getBounds().max.z;
 			splitZ.push_back(SplitEvent(currPrim->getBounds().max.z, i, 0));
 			splitZ.push_back(SplitEvent(currPrim->getBounds().min.z, i, 2));
-
 		}
 	}
 
@@ -38,7 +37,7 @@ namespace rt
 		uint32_t rightPrimCount = primCount;
 		float baseArea = 2.0f*coef1*coef2;
 		// natural termination criteria from Ingo Wald's paper
-		float bestCost = primCount;
+		float bestCost = static_cast<float>(primCount);
 		uint32_t bestPrimCountL = primCount;
 		uint32_t bestPrimCountR = primCount;
 		for (uint32_t i = 0; i < e.size();)
@@ -172,17 +171,17 @@ namespace rt
 			switch (classified[i])
 			{
 			case 0:
-				leftMapping[i] = pl.size();
+				leftMapping[i] = static_cast<uint32_t>(pl.size());
 				pl.push_back(p[i]);
-				rightMapping[i] = pr.size();
+				rightMapping[i] = static_cast<uint32_t>(pr.size());
 				pr.push_back(p[i]);
 				break;
 			case 1:
-				leftMapping[i] = pl.size();
+				leftMapping[i] = static_cast<uint32_t>(pl.size());
 				pl.push_back(p[i]);
 				break;
 			case 2:
-				rightMapping[i] = pr.size();
+				rightMapping[i] = static_cast<uint32_t>(pr.size());
 				pr.push_back(p[i]);
 				break;
 			}
@@ -304,7 +303,7 @@ namespace rt
 		float splitVal = pX[split].val;
 		std::vector<unsigned char> classified;
 		// classify the primitives:
-		classifyPrimitives(pX, splitVal, classified, p.size(), leftCount, rightCount, bothCount);
+		classifyPrimitives(pX, splitVal, classified, static_cast<uint32_t>(p.size()), leftCount, rightCount, bothCount);
 
 		// split the primitives into left and right:
 		// reserve enough space for the primitives in the left set
@@ -334,7 +333,7 @@ namespace rt
 		std::pair<uint32_t, unsigned char> bestPlane;
 
 		if(!leafNode)
-			bestPlane = findBestSplit(bbox, p.size(), eventX, eventY, eventZ); //find best split: O(N)
+			bestPlane = findBestSplit(bbox, static_cast<uint32_t>(p.size()), eventX, eventY, eventZ); //find best split: O(N)
 
 		// check prim count, height and SAH terimantion criteria
 		if(leafNode || bestPlane.second==4)

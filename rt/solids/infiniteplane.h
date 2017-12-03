@@ -20,20 +20,20 @@ public:
 
 	virtual BBox getBounds() const
 	{
-		// a tighter bound can be used for planes parallel to xy, xz, yz:
-		if (normal.x == 0.0f && normal.y == 0.0f) // parallel to xy
-		{
-			return BBox(Point(-FLT_MAX, -FLT_MAX, origin.z-epsilon), Point( FLT_MAX, FLT_MAX, origin.z + epsilon));
-		}
-		else if (normal.x == 0.0f && normal.z == 0.0f) // parallel to xz
-		{
-			return BBox(Point(-FLT_MAX, origin.y-epsilon, -FLT_MAX), Point(FLT_MAX, origin.y+epsilon, FLT_MAX));
-		}
-		else if (normal.y == 0.0f && normal.z == 0.0f) // parallel to yz
-		{
-			return BBox(Point(origin.x - epsilon, -FLT_MAX, -FLT_MAX), Point(origin.x + epsilon, FLT_MAX, FLT_MAX));
-		}
-		else
+		//// a tighter bound can be used for planes parallel to xy, xz, yz:
+		//if (normal.x == 0.0f && normal.y == 0.0f) // parallel to xy
+		//{
+		//	return BBox(Point(-FLT_MAX, -FLT_MAX, origin.z-epsilon), Point( FLT_MAX, FLT_MAX, origin.z + epsilon));
+		//}
+		//else if (normal.x == 0.0f && normal.z == 0.0f) // parallel to xz
+		//{
+		//	return BBox(Point(-FLT_MAX, origin.y-epsilon, -FLT_MAX), Point(FLT_MAX, origin.y+epsilon, FLT_MAX));
+		//}
+		//else if (normal.y == 0.0f && normal.z == 0.0f) // parallel to yz
+		//{
+		//	return BBox(Point(origin.x - epsilon, -FLT_MAX, -FLT_MAX), Point(origin.x + epsilon, FLT_MAX, FLT_MAX));
+		//}
+		//else
 			return BBox::full();
 	}
     virtual Intersection intersect(const Ray& ray, float previousBestDistance=FLT_MAX) const

@@ -21,7 +21,7 @@ public:
 	}
 	static BBox full()
 	{
-		BBox result;
+		BBox result(Point::rep(-FLT_MAX), Point::rep(FLT_MAX));
 		result.unbound = true;
 		return result;
 	}

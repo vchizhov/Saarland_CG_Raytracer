@@ -1,9 +1,7 @@
 #ifndef CG1RAYTRACER_ASSERT_HEADER
 #define CG1RAYTRACER_ASSERT_HEADER
-
-#include <iostream>
 #include <cstdlib>
-
+#include <iostream>
 
 class Assert {
 public:

@@ -1,8 +1,17 @@
 #include <core/vector.h>
 #include <core/point.h>
-
+#include <core/float4.h>
+#include <core/assert.h>
 namespace rt
 {
+	Vector::Vector(const Float4& f)
+		: x(f.x), y(f.y), z(f.z)
+	{
+		Assert a(f.w == 0.0f);
+		a << "Use a Float4 with w = " << f.w << " in the Vector ctor.";
+
+	}
+
 	Vector operator*(float scalar, const Vector& b)
 	{
 		return Vector(scalar*b.x, scalar*b.y, scalar*b.z);

@@ -145,9 +145,11 @@
   <ItemGroup>
     <ClInclude Include="core\assert.h" />
     <ClInclude Include="core\color.h" />
+    <ClInclude Include="core\float4.h" />
     <ClInclude Include="core\image.h" />
     <ClInclude Include="core\julia.h" />
     <ClInclude Include="core\macros.h" />
+    <ClInclude Include="core\matrix.h" />
     <ClInclude Include="core\point.h" />
     <ClInclude Include="core\scalar.h" />
     <ClInclude Include="core\vector.h" />
@@ -167,9 +169,11 @@
     <ClInclude Include="rt\integrators\casting.h" />
     <ClInclude Include="rt\integrators\castingdist.h" />
     <ClInclude Include="rt\integrators\integrator.h" />
+    <ClInclude Include="rt\integrators\montecarlo.h" />
     <ClInclude Include="rt\intersection.h" />
     <ClInclude Include="rt\loaders\obj.h" />
     <ClInclude Include="rt\primitive.h" />
+    <ClInclude Include="rt\primmod\instance.h" />
     <ClInclude Include="rt\ray.h" />
     <ClInclude Include="rt\renderer.h" />
     <ClInclude Include="rt\solids\aabox.h" />
@@ -184,8 +188,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\color.cpp" />
+    <ClCompile Include="core\float4.cpp" />
     <ClCompile Include="core\image.cpp" />
     <ClCompile Include="core\julia.cpp" />
+    <ClCompile Include="core\matrix.cpp" />
     <ClCompile Include="core\point.cpp" />
     <ClCompile Include="core\scalar.cpp" />
     <ClCompile Include="core\vector.cpp" />
@@ -195,6 +201,7 @@
     <ClCompile Include="main\a_indexing.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="main\a_instancing.cpp" />
     <ClCompile Include="main\a_julia.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>

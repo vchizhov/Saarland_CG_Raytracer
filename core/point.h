@@ -11,7 +11,13 @@ class Float4;
 
 class ALIGN(16) Point {
 public:
-    float x, y, z;
+	union
+	{
+		struct {
+			float x, y, z;
+		};
+		float e[3];
+	};
 
     Point() {}
     Point(float x, float y, float z) : x(x), y(y), z(z) {}
@@ -32,6 +38,8 @@ public:
 
 Point operator*(float scalar, const Point& b);
 Point operator*(const Point& a, float scalar);
+
+Point operator*(const Float4& scale, const Point& p);
 
 template<>
 Point min(const Point& a, const Point& b);

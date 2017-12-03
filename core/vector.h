@@ -11,7 +11,13 @@ class Point;
 class Float4;
 class ALIGN(16) Vector {
 public:
-    float x, y, z;
+	union
+	{
+		struct {
+			float x, y, z;
+		};
+		float e[3];
+	};
 
     Vector() {}
     Vector(float x, float y, float z) : x(x), y(y), z(z) {}
@@ -78,8 +84,6 @@ Point operator+(const Vector& a, const Point& b);
 Point operator-(const Point& a, const Vector& b);
 
 std::ostream& operator<<(std::ostream& os, const Vector& v);
-
-Point operator*(const Float4& scale, const Point& p);
 
 Vector operator-(const Point& a, const Point& b);
 

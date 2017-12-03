@@ -5,6 +5,7 @@
 #include <iostream>
 #include <rt/groups/btree_info.h>
 #include <rt/intersection.h>
+#include <rt/groups/simplegroup.h>
 
 namespace rt {
 
@@ -32,7 +33,6 @@ namespace rt {
 		// from a set of primitives builds sets of split events along x,y,z
 		static void buildSplitEvents(std::vector<Primitive*>& primitives,
 			std::vector<SplitEvent>& splitX, std::vector<SplitEvent>& splitY, std::vector<SplitEvent>& splitZ);
-
 
 		// helper for findBestPlane(...)
 		static float findBest(const std::vector<SplitEvent>& e, uint32_t primCount, 
@@ -112,23 +112,27 @@ namespace rt {
 			BTreeInfo split(std::vector<Primitive*>& p, std::vector<SplitEvent>& eventX, std::vector<SplitEvent>& eventY, std::vector<SplitEvent>& eventZ,
 				uint32_t height);
 
-
 			Intersection intersect(const Ray& r, float previousBestDistance = FLT_MAX) const;
 
 
 		};
 	private:
 		std::vector<Primitive*> primitives;
+		SimpleGroup unboundPrimitives;
 		BTree root;
 	public:
 		SAHKDTree() {}
 		virtual BBox getBounds() const { return root.bbox; }
 		virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const
 		{
+			// go over all of the unbounded primitives
+			Intersection interUnbound = unboundPrimitives.intersect(ray, previousBestDistance);
+			if (interUnbound) previousBestDistance = interUnbound.distance;
 			// the base is here, so that I can evaluate the left and right in the right order in the recursion
 			auto inter = root.bbox.intersect(ray);
-			if (inter.first >= inter.second || inter.first >= previousBestDistance) return Intersection::failure();
-			return root.intersect(Ray(ray.getPoint(inter.first), ray.d), min(inter.second, previousBestDistance));
+			if (inter.first >= inter.second || inter.first >= previousBestDistance) return interUnbound;
+			Intersection interTree = root.intersect(Ray(ray.getPoint(inter.first), ray.d), min(inter.second, previousBestDistance));
+			return interTree ? interTree : interUnbound;
 		}
 		virtual void rebuildIndex()
 		{
@@ -157,8 +161,18 @@ namespace rt {
 		virtual ~SAHKDTree() {}
 		virtual void add(Primitive* p)
 		{
-			primitives.push_back(p);
-			root.bbox.extend(p->getBounds());
+			if (!p->getBounds().isEmpty())
+			{
+				if (p->getBounds().isUnbound())
+				{
+					unboundPrimitives.add(p);
+				}
+				else
+				{
+					primitives.push_back(p);
+					root.bbox.extend(p->getBounds());
+				}
+			}
 		}
 		virtual void setMaterial(Material* m) {}
 		virtual void setCoordMapper(CoordMapper* cm) {}
