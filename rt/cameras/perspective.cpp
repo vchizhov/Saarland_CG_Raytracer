@@ -25,6 +25,6 @@ namespace rt
 	{
 		// we use -z like in OpenGL
 		Vector dir = -forward + x*scaleX*right + y*scaleY*up;
-		return Ray(center+dir, dir.normalize());
+		return Ray(center, dir.normalize());
 	}
 }

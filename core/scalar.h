@@ -7,6 +7,10 @@
 
 namespace rt {
 
+template <typename T> int sgn(T val) {
+	return (T(0) < val) - (val < T(0));
+}
+
 // definition of min and max for arbitrary number of arguments
 template<typename T, typename...Args>
 T min(const T& a, const Args&...args)
@@ -40,7 +44,7 @@ T clamp(T a, T b, T x) { return max(a, min(x, b)); }
 
 // Computes a square of
 template <typename T>
-T sqr(const T& a) { return a*a; }
+T sqr(T a) { return a*a; }
 
 // Returns the fractional part of a number. For negative numbers it returns the negative fractional
 float fractional(float f);

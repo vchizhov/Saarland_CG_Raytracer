@@ -89,6 +89,8 @@ Vector operator-(const Point& a, const Point& b);
 
 Vector perp(const Vector& a);
 
+Vector reflect(const Vector& in, const Vector& norm);
+
 template<>
 Vector min(const Vector& a, const Vector& b);
 

@@ -27,6 +27,8 @@ public:
 	//! intersection point
 	Point hitP;
 
+	Point localP;
+
     Intersection() {}
 	static Intersection failure()
 	{
@@ -35,7 +37,7 @@ public:
 		return fail;
 	}
 	Intersection(float distance, const Ray& ray, const Solid* solid, const Vector& normal, const Point& uv)
-		:distance(distance), ray(ray), solid(solid), norm(normal)
+		:distance(distance), ray(ray), solid(solid), norm(dot(normal, ray.d)<0.0f?normal:-normal), localP(uv)
 	{
 
 	}
@@ -50,7 +52,7 @@ public:
 	}
 	Point local() const
 	{
-		return ray.getPoint(distance);
+		return localP;
 	}
 
 	operator bool() //this allows intersection object to be put directly in conditional statements. Becomes true iff there is an intersection

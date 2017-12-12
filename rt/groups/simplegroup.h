@@ -51,7 +51,8 @@ public:
 	}
 	virtual void setMaterial(Material* m)
 	{
-
+		for (auto i = 0; i < primitives.size(); ++i)
+			primitives[i]->setMaterial(m);
 	}
 	virtual void setCoordMapper(CoordMapper* cm)
 	{

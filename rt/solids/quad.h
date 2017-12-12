@@ -3,6 +3,7 @@
 
 #include <rt/solids/solid.h>
 #include <rt/intersection.h>
+#include <rt/bbox.h>
 
 namespace rt {
 

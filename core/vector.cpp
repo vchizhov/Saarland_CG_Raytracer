@@ -87,6 +87,13 @@ namespace rt
 			return Vector::rep(0.0f);
 	}
 
+	// v is such that the origin of v and norm coincide
+	Vector reflect(const Vector& v, const Vector& norm)
+	{
+		float dt = dot(v, norm);
+		return 2.0f*dt*norm - v;
+	}
+
 	template<>
 	Vector min(const Vector& a, const Vector& b)
 	{

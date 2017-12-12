@@ -28,6 +28,15 @@
     <Filter Include="rt\primmod">
       <UniqueIdentifier>{723965ca-5256-4473-a3ac-156abb8feabe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rt\materials">
+      <UniqueIdentifier>{d6e258a7-e8b8-4ba9-b2b3-3442ecd5b048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rt\lights">
+      <UniqueIdentifier>{21eeb6b8-2e9e-4222-b323-0e756b641988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rt\textures">
+      <UniqueIdentifier>{a175a240-5fbd-42b0-a08f-cc937d245820}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rt\ray.h">
@@ -156,6 +165,54 @@
     <ClInclude Include="rt\integrators\montecarlo.h">
       <Filter>rt\integrators</Filter>
     </ClInclude>
+    <ClInclude Include="rt\integrators\raytrace.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\integrators\recraytrace.h">
+      <Filter>rt\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\combine.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\dummy.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\lambertian.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\material.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\mirror.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\phong.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\lights\directional.h">
+      <Filter>rt\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\lights\light.h">
+      <Filter>rt\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\lights\pointlight.h">
+      <Filter>rt\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\lights\spotlight.h">
+      <Filter>rt\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\textures\constant.h">
+      <Filter>rt\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\textures\texture.h">
+      <Filter>rt\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\lights\projectivelight.h">
+      <Filter>rt\lights</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\materials\cooktorrance.h">
+      <Filter>rt\materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt\renderer.cpp">
@@ -226,6 +283,42 @@
     </ClCompile>
     <ClCompile Include="core\float4.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_lighting.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_materials.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\dummy.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\integrators\raytrace.cpp">
+      <Filter>rt\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\lights\projectivelight.cpp">
+      <Filter>rt\lights</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\lambertian.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\phong.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\mirror.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\integrators\recraytrace.cpp">
+      <Filter>rt\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\combine.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\cooktorrance.cpp">
+      <Filter>rt\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\materials\material.cpp">
+      <Filter>rt\materials</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
