@@ -9,11 +9,11 @@ void a_materials();
 void a_distributed();
 void a_textures();
 void a_mappers();
+void a_smooth();
+void a_bumpmappers();
 
 int main(int argc, char* argv[])
 {
-    a_textures();
-	a_mappers();
-	a_distributed();
+    a_smooth();
     return 0;
 }
