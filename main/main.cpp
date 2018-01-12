@@ -13,7 +13,7 @@ void a_mappers();
 int main(int argc, char* argv[])
 {
     a_textures();
-	// a_mappers();
-	// a_distributed();
+	a_mappers();
+	a_distributed();
     return 0;
 }

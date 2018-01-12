@@ -13,6 +13,9 @@ namespace rt
 	RGBColor RecursiveRayTracingIntegrator::directIllumination(const Intersection& result) const
 	{
 		RGBColor total = RGBColor::rep(0.0f);
+		Point texPoint = result.solid->texMapper->getCoords(result);
+		RGBColor emission = result.solid->material->getEmission(texPoint, result.normal(), -result.ray.d);
+		total = total + emission;
 		// iterate over the lights in the scene
 		for (auto i = 0; i < world->light.size(); ++i)
 		{
@@ -29,16 +32,15 @@ namespace rt
 				Ray shadowRay(offsetHitPoint, lightHit.direction);
 				// we could use a modified intersection routine, which exits early, rather than finding the closest intersection
 				// it also does not need to calculate normals etc, since only whether there was an intersection matters
-				Intersection inter = world->scene->intersect(shadowRay, lightHit.distance);
+				Intersection inter = world->scene->intersect(shadowRay, lightHit.distance - 100.0f*epsilon);
 				// if there's no objects between the hit point and trhe light source
 				if (!inter)
 				{
 					// calculate the brd weight based on the texture at the hit point, the normal at the hit point, and the incident and outgoing direction
-					RGBColor brdfWeight = result.solid->material->getReflectance(result.local(), result.normal(), -result.ray.d, lightHit.direction);
-					// same for the emission of the material, but we don't need to consider incoming radiance here
-					RGBColor emission = result.solid->material->getEmission(result.local(), result.normal(), -result.ray.d);
+					RGBColor brdfWeight = result.solid->material->getReflectance(texPoint, result.normal(), -result.ray.d, lightHit.direction);
+
 					// add the contribution from the current light
-					total = total + emission + brdfWeight*world->light[i]->getIntensity(lightHit);
+					total = total + brdfWeight*world->light[i]->getIntensity(lightHit);
 				}
 			}
 		}
@@ -62,6 +64,7 @@ namespace rt
 		// with perfect reflectance
 		for(int iter=0; iter < 6; ++iter)
 		{
+
 			// no intersection  or no sampling required -> exit out of the loop
 			if (!result || result.solid->material->useSampling() == Material::SAMPLING_NOT_NEEDED) break;
 
@@ -72,14 +75,18 @@ namespace rt
 			// get the sampled direction and the corresponding reflectance
 			// we have only perfect reflection for now, so we know that the resulting direction
 			// is in the same hemisphere as the normal
-			Material::SampleReflectance refl = result.solid->material->getSampleReflectance(result.local(),
+			Point texPoint = result.solid->texMapper->getCoords(result);
+			Material::SampleReflectance refl = result.solid->material->getSampleReflectance(texPoint,
 				result.normal(), -currentRay.d);
 
 			// take into account the percent of reflected energy 
 			throughput = throughput*refl.reflectance;
 
 			// prepare the next ray
-			currentRay = Ray(result.hitPoint() + 100.0f*epsilon*result.normal(), refl.direction);
+			float sgnMod = 1.0f;
+			if (dot(refl.direction, result.normal()) < 0.0f)
+				sgnMod = -1.0f;
+			currentRay = Ray(result.hitPoint() + sgnMod*100.0f*epsilon*result.normal(), refl.direction); // Ray(result.hitPoint() + 100.0f*epsilon*result.normal(), refl.direction);
 
 			// find the next intersection
 			result = world->scene->intersect(currentRay);

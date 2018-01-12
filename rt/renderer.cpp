@@ -13,7 +13,7 @@ rt::RGBColor a2computeColor(const rt::Ray& r);
 namespace rt
 {
 	Renderer::Renderer(Camera* cam, Integrator* integrator)
-		: cam(cam), integrator(integrator)
+		: cam(cam), integrator(integrator), samples(1)
 	{
 		numThreads = std::thread::hardware_concurrency();
 		threads = new std::thread*[numThreads];
@@ -33,32 +33,49 @@ namespace rt
 		delete[] threads;
 	}
 
-	void setSamples(uint samples)
+	void Renderer::setSamples(uint samples)
 	{
-
+		this->samples = samples;
 	}
 
 	void Renderer::render_thread(Image& img, uint x0, uint x1, uint y0, uint y1)
 	{
+		
 		for (uint y = y0; y < y1; ++y)
 		{
 			//[0,resY) -> [1,-1]
 			// a*0 + b = 1 => b = 1
 			// a*resY + b = -1 => a = -2/resY
-			// the 0.5 offset is so that we pick the center of the pixel
-			float ndcY = -2.0f*(float(y) + 0.5f) / float(img.height()) + 1.0f;
+			// i removed the 0.5 offset since we use random in the samples part
+			float ndcY = -2.0f*(float(y)) / float(img.height()) + 1.0f;
 			for (uint x = x0; x < x1; ++x)
 			{
 				//[0,resX) -> [-1, 1]
 				// a*0 + b = -1 => b = -1
 				// a*resX + b = 1 => a = 2/resX
-				// the 0.5 offset is so that we pick the center of the pixel
-				float ndcX = 2.0f*(float(x) + 0.5f) / float(img.width()) - 1.0f;
-				Ray ray = cam->getPrimaryRay(ndcX, ndcY);
-				if (ray.d != Vector::rep(0.0f))
-					img(x, y) = integrator->getRadiance(ray);
+				// I removed 0.5 offset since we use random in the samples part
+				float ndcX = 2.0f*(float(x)) / float(img.width()) - 1.0f;
+
+				if (samples == 1)
+				{
+					Ray ray = cam->getPrimaryRay(ndcX + 1.0f / float(img.width()), ndcY - 1.0f / float(img.height()));
+					if (ray.d != Vector::rep(0.0f))
+						img(x, y) = integrator->getRadiance(ray);
+					else
+						img(x, y) = RGBColor::rep(0.0f);
+				}
 				else
-					img(x, y) = RGBColor(0.0f, 0.0f, 0.0f);
+				{
+					RGBColor total = RGBColor::rep(0.0f);
+					for (uint s = 0; s < samples; ++s)
+					{
+						Ray ray = cam->getPrimaryRay(ndcX + 2.0f*random() / float(img.width()), ndcY - 2.0f*random() / float(img.height()));
+						if (ray.d != Vector::rep(0.0f))
+							total = total + integrator->getRadiance(ray);
+					}
+					img(x, y) = total / samples;
+				}
+				
 			}
 		}
 	}

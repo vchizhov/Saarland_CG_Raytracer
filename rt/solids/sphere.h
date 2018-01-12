@@ -40,14 +40,14 @@ public:
 		if (t1 > 0.0f)
 		{
 			Vector diff = (ray.getPoint(t1) - center)/radius;
-			return Intersection(t1, ray, this, diff, Point(acosf(diff.z), atanf(diff.y / diff.x), 0.0f));
+			return Intersection(t1, ray, this, diff, Point::rep(0.0f) + diff*radius);// Point(acosf(diff.z), atanf(diff.y / diff.x), 0.0f)
 		}
 		float t2 = dt + dSqrt;
 		// either the intersection was farther than the closest one, or it was behind us
 		if (t2 < 0.0f || t2>previousBestDistance) return Intersection::failure();
 		//this is the closest intersection
 		Vector diff = (ray.getPoint(t2) - center)/radius;
-		return Intersection(t2, ray, this, diff, Point(acosf(diff.z), atanf(diff.y/diff.x), 0.0f));
+		return Intersection(t2, ray, this, diff, Point::rep(0.0f) + diff*radius);//Point(acosf(diff.z), atanf(diff.y/diff.x), 0.0f)
 	}
 	virtual Point sample() const
 	{

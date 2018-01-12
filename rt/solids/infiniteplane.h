@@ -3,7 +3,8 @@
 
 #include <rt/solids/solid.h>
 #include <rt/ray.h>
-
+#include <rt/bbox.h>
+#include <rt/intersection.h>
 namespace rt {
 	
 class InfinitePlane : public Solid {
@@ -45,7 +46,7 @@ public:
 		float t = dot(normal, origin - ray.o) / dt;
 		// if the intersection is not in the ray's direction or there's a closer intersection - ignore it - no intersection
 		if (t < 0.0f || t>previousBestDistance) return Intersection::failure();
-		return Intersection(t, ray, this, normal, Point::rep(0.0f));
+		return Intersection(t, ray, this, normal, Point::rep(0.0f) + (ray.getPoint(t) - origin));
 	}
 	virtual Point sample() const
 	{

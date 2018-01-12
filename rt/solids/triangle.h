@@ -4,6 +4,7 @@
 #include <rt/solids/solid.h>
 #include <rt/intersection.h>
 #include <rt/bbox.h>
+#include <core/random.h>
 
 namespace rt {
 
@@ -52,11 +53,15 @@ public:
 		float gamma = dot(a, cross(ray.d, c)) * invDet;
 		// if the intersection is outside of the triangle - ignore it - no intersection
 		if (beta < 0.0f || gamma<0.0f || beta + gamma>1.0f) return Intersection::failure();
-		return Intersection(t, ray, this, ab.normalize(), Point(beta, gamma, 1.0f - (beta + gamma)));
+		return Intersection(t, ray, this, ab.normalize(), Point(1.0f - (beta + gamma), beta, gamma));
 	}
 	virtual Point sample() const
 	{
-		return Point::rep(0.0f);
+		float sr1 = sqrtf(random());
+		float r2 = random();
+		float alpha = 1.0f - sr1;
+		float beta = r2*sr1;
+		return v2 + (v1 - v2) * alpha + (v3 - v2) * beta;
 	}
 	virtual float getArea() const
 	{

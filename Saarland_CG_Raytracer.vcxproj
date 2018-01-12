@@ -147,18 +147,28 @@
     <ClInclude Include="core\color.h" />
     <ClInclude Include="core\float4.h" />
     <ClInclude Include="core\image.h" />
+    <ClInclude Include="core\interpolate-impl.h" />
+    <ClInclude Include="core\interpolate.h" />
     <ClInclude Include="core\julia.h" />
     <ClInclude Include="core\macros.h" />
     <ClInclude Include="core\matrix.h" />
     <ClInclude Include="core\point.h" />
+    <ClInclude Include="core\random.h" />
     <ClInclude Include="core\scalar.h" />
     <ClInclude Include="core\vector.h" />
     <ClInclude Include="rt\bbox.h" />
     <ClInclude Include="rt\cameras\camera.h" />
+    <ClInclude Include="rt\cameras\dofperspective.h" />
     <ClInclude Include="rt\cameras\environment.h" />
     <ClInclude Include="rt\cameras\fisheye.h" />
     <ClInclude Include="rt\cameras\orthographic.h" />
     <ClInclude Include="rt\cameras\perspective.h" />
+    <ClInclude Include="rt\coordmappers\coordmapper.h" />
+    <ClInclude Include="rt\coordmappers\cylindrical.h" />
+    <ClInclude Include="rt\coordmappers\plane.h" />
+    <ClInclude Include="rt\coordmappers\spherical.h" />
+    <ClInclude Include="rt\coordmappers\tmapper.h" />
+    <ClInclude Include="rt\coordmappers\world.h" />
     <ClInclude Include="rt\groups\btree_info.h" />
     <ClInclude Include="rt\groups\bvh.h" />
     <ClInclude Include="rt\groups\group.h" />
@@ -173,6 +183,7 @@
     <ClInclude Include="rt\integrators\raytrace.h" />
     <ClInclude Include="rt\integrators\recraytrace.h" />
     <ClInclude Include="rt\intersection.h" />
+    <ClInclude Include="rt\lights\arealight.h" />
     <ClInclude Include="rt\lights\directional.h" />
     <ClInclude Include="rt\lights\light.h" />
     <ClInclude Include="rt\lights\pointlight.h" />
@@ -182,6 +193,9 @@
     <ClInclude Include="rt\materials\combine.h" />
     <ClInclude Include="rt\materials\cooktorrance.h" />
     <ClInclude Include="rt\materials\dummy.h" />
+    <ClInclude Include="rt\materials\flatmaterial.h" />
+    <ClInclude Include="rt\materials\fuzzymirror.h" />
+    <ClInclude Include="rt\materials\glass.h" />
     <ClInclude Include="rt\materials\lambertian.h" />
     <ClInclude Include="rt\materials\material.h" />
     <ClInclude Include="rt\materials\mirror.h" />
@@ -198,7 +212,10 @@
     <ClInclude Include="rt\solids\solid.h" />
     <ClInclude Include="rt\solids\sphere.h" />
     <ClInclude Include="rt\solids\triangle.h" />
+    <ClInclude Include="rt\textures\checkerboard.h" />
     <ClInclude Include="rt\textures\constant.h" />
+    <ClInclude Include="rt\textures\imagetex.h" />
+    <ClInclude Include="rt\textures\perlin.h" />
     <ClInclude Include="rt\textures\texture.h" />
     <ClInclude Include="rt\world.h" />
   </ItemGroup>
@@ -206,12 +223,17 @@
     <ClCompile Include="core\color.cpp" />
     <ClCompile Include="core\float4.cpp" />
     <ClCompile Include="core\image.cpp" />
+    <ClCompile Include="core\interpolate.cpp" />
     <ClCompile Include="core\julia.cpp" />
     <ClCompile Include="core\matrix.cpp" />
     <ClCompile Include="core\point.cpp" />
+    <ClCompile Include="core\random.cpp" />
     <ClCompile Include="core\scalar.cpp" />
     <ClCompile Include="core\vector.cpp" />
     <ClCompile Include="main\a_cameras.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main\a_distributed.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main\a_indexing.cpp">
@@ -222,9 +244,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main\a_lighting.cpp" />
+    <ClCompile Include="main\a_mappers.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main\a_materials.cpp" />
     <ClCompile Include="main\a_solids.cpp" />
+    <ClCompile Include="main\a_textures.cpp" />
     <ClCompile Include="main\main.cpp" />
+    <ClCompile Include="rt\cameras\dofperspective.cpp" />
     <ClCompile Include="rt\cameras\environment.cpp" />
     <ClCompile Include="rt\cameras\fisheye.cpp" />
     <ClCompile Include="rt\cameras\orthographic.cpp" />
@@ -236,14 +263,19 @@
     <ClCompile Include="rt\integrators\recraytrace.cpp" />
     <ClCompile Include="rt\lights\projectivelight.cpp" />
     <ClCompile Include="rt\loaders\obj.cpp" />
+    <ClCompile Include="rt\loaders\objmat.cpp" />
     <ClCompile Include="rt\materials\combine.cpp" />
     <ClCompile Include="rt\materials\cooktorrance.cpp" />
     <ClCompile Include="rt\materials\dummy.cpp" />
+    <ClCompile Include="rt\materials\flatmaterial.cpp" />
+    <ClCompile Include="rt\materials\fuzzymirror.cpp" />
+    <ClCompile Include="rt\materials\glass.cpp" />
     <ClCompile Include="rt\materials\lambertian.cpp" />
     <ClCompile Include="rt\materials\material.cpp" />
     <ClCompile Include="rt\materials\mirror.cpp" />
     <ClCompile Include="rt\materials\phong.cpp" />
     <ClCompile Include="rt\renderer.cpp" />
+    <ClCompile Include="rt\textures\perlin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

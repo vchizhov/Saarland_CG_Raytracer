@@ -2,7 +2,7 @@
 #define CG1RAYTRACER_SOLIDS_SOLID_HEADER
 
 #include <rt/primitive.h>
-
+#include <rt/coordmappers/world.h>
 namespace rt {
 
 class Material;
@@ -16,7 +16,7 @@ public:
     Material* material;
     CoordMapper* texMapper;
 	explicit Solid(CoordMapper* texMapper = nullptr, Material* material = nullptr)
-		:texMapper(texMapper), material(material)
+		:texMapper(texMapper==nullptr ? new WorldMapper() : texMapper), material(material)
 	{
 
 	}

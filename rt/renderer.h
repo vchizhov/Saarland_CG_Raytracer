@@ -4,7 +4,7 @@
 #include <core/scalar.h>
 #include <thread>
 #include <chrono>
-
+#include <core/random.h>
 namespace rt {
 
 class Image;

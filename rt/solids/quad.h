@@ -4,6 +4,7 @@
 #include <rt/solids/solid.h>
 #include <rt/intersection.h>
 #include <rt/bbox.h>
+#include <core/random.h>
 
 namespace rt {
 
@@ -50,7 +51,9 @@ public:
 	}
 	virtual Point sample() const
 	{
-		return Point::rep(0.0f);
+		float r1 = random();
+		float r2 = random();
+		return v1 + span1*r1 + span2*r2;
 	}
 	virtual float getArea() const
 	{

@@ -29,6 +29,9 @@ public:
 
 	Point localP;
 
+	// whether the normal was flipped
+	bool flipped;
+
     Intersection() {}
 	static Intersection failure()
 	{
@@ -36,8 +39,8 @@ public:
 		fail.distance = -1.0f;
 		return fail;
 	}
-	Intersection(float distance, const Ray& ray, const Solid* solid, const Vector& normal, const Point& uv)
-		:distance(distance), ray(ray), solid(solid), norm(dot(normal, ray.d)<0.0f?normal:-normal), localP(uv)
+	Intersection(float distance, const Ray& ray, const Solid* solid, const Vector& normal, const Point& uv, bool flipped = false)
+		:distance(distance), ray(ray), solid(solid), norm(dot(normal, ray.d)<0.0f?normal:-normal), localP(uv), flipped(flipped)
 	{
 
 	}
