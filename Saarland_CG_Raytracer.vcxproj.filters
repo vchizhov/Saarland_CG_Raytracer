@@ -40,6 +40,9 @@
     <Filter Include="rt\coordmappers">
       <UniqueIdentifier>{9af9a6ad-ed51-455d-99fb-8ca0c1f780cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rendering_comp">
+      <UniqueIdentifier>{f4de281c-4121-4905-91e4-b3ea1643cb64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rt\ray.h">
@@ -267,6 +270,24 @@
     <ClInclude Include="rt\cameras\dofperspective.h">
       <Filter>rt\cameras</Filter>
     </ClInclude>
+    <ClInclude Include="rt\solids\striangle.h">
+      <Filter>rt\solids</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\primmod\bmap.h">
+      <Filter>rt\primmod</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering_comp\vcdr_renderer.h">
+      <Filter>rendering_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering_comp\vcdr_util.h">
+      <Filter>rendering_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering_comp\vcdr_integrator.h">
+      <Filter>rendering_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering_comp\vcdr_camera.h">
+      <Filter>rendering_comp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt\renderer.cpp">
@@ -406,6 +427,24 @@
     </ClCompile>
     <ClCompile Include="rt\cameras\dofperspective.cpp">
       <Filter>rt\cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_bump.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\a_smooth.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\primmod\bmap.cpp">
+      <Filter>rt\primmod</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering_comp\vcdr_renderer.cpp">
+      <Filter>rendering_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering_comp\rendering_comp.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering_comp\vcdr_util.cpp">
+      <Filter>rendering_comp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

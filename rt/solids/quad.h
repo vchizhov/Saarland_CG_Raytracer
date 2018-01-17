@@ -24,7 +24,7 @@ public:
 	virtual BBox getBounds() const
 	{
 		Point min = rt::min(v1, v1 + span1, v1 + span2, v1 + span1 + span2);
-		Point max = rt::min(v1, v1 + span1, v1 + span2, v1 + span1 + span2);
+		Point max = rt::max(v1, v1 + span1, v1 + span2, v1 + span1 + span2);
 		return BBox(min, max);
 	}
 	virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const

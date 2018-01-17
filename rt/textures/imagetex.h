@@ -104,11 +104,15 @@ public:
 	}
 	virtual RGBColor getColorDX(const Point& coord)
 	{
-		return RGBColor::rep(0.0f);
+		float scale = 1.0f;
+		Vector h = Vector(scale / float(image.width()), 0.0f, 0.0f);
+		return (getColor(coord+h) - getColor(coord))/scale;
 	}
 	virtual RGBColor getColorDY(const Point& coord)
 	{
-		return RGBColor::rep(0.0f);
+		float scale = 1.0f;
+		Vector h = Vector(0.0f, scale / float(image.height()), 0.0f);
+		return (getColor(coord+h) - getColor(coord))/scale;
 	}
 };
 

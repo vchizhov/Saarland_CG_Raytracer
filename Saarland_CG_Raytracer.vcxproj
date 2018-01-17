@@ -156,6 +156,10 @@
     <ClInclude Include="core\random.h" />
     <ClInclude Include="core\scalar.h" />
     <ClInclude Include="core\vector.h" />
+    <ClInclude Include="rendering_comp\vcdr_camera.h" />
+    <ClInclude Include="rendering_comp\vcdr_integrator.h" />
+    <ClInclude Include="rendering_comp\vcdr_renderer.h" />
+    <ClInclude Include="rendering_comp\vcdr_util.h" />
     <ClInclude Include="rt\bbox.h" />
     <ClInclude Include="rt\cameras\camera.h" />
     <ClInclude Include="rt\cameras\dofperspective.h" />
@@ -201,6 +205,7 @@
     <ClInclude Include="rt\materials\mirror.h" />
     <ClInclude Include="rt\materials\phong.h" />
     <ClInclude Include="rt\primitive.h" />
+    <ClInclude Include="rt\primmod\bmap.h" />
     <ClInclude Include="rt\primmod\instance.h" />
     <ClInclude Include="rt\ray.h" />
     <ClInclude Include="rt\renderer.h" />
@@ -211,6 +216,7 @@
     <ClInclude Include="rt\solids\quadric.h" />
     <ClInclude Include="rt\solids\solid.h" />
     <ClInclude Include="rt\solids\sphere.h" />
+    <ClInclude Include="rt\solids\striangle.h" />
     <ClInclude Include="rt\solids\triangle.h" />
     <ClInclude Include="rt\textures\checkerboard.h" />
     <ClInclude Include="rt\textures\constant.h" />
@@ -230,6 +236,7 @@
     <ClCompile Include="core\random.cpp" />
     <ClCompile Include="core\scalar.cpp" />
     <ClCompile Include="core\vector.cpp" />
+    <ClCompile Include="main\a_bump.cpp" />
     <ClCompile Include="main\a_cameras.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -248,9 +255,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main\a_materials.cpp" />
+    <ClCompile Include="main\a_smooth.cpp" />
     <ClCompile Include="main\a_solids.cpp" />
     <ClCompile Include="main\a_textures.cpp" />
     <ClCompile Include="main\main.cpp" />
+    <ClCompile Include="rendering_comp\rendering_comp.cpp" />
+    <ClCompile Include="rendering_comp\vcdr_renderer.cpp" />
+    <ClCompile Include="rendering_comp\vcdr_util.cpp" />
     <ClCompile Include="rt\cameras\dofperspective.cpp" />
     <ClCompile Include="rt\cameras\environment.cpp" />
     <ClCompile Include="rt\cameras\fisheye.cpp" />
@@ -274,6 +285,7 @@
     <ClCompile Include="rt\materials\material.cpp" />
     <ClCompile Include="rt\materials\mirror.cpp" />
     <ClCompile Include="rt\materials\phong.cpp" />
+    <ClCompile Include="rt\primmod\bmap.cpp" />
     <ClCompile Include="rt\renderer.cpp" />
     <ClCompile Include="rt\textures\perlin.cpp" />
   </ItemGroup>
