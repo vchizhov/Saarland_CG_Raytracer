@@ -1,6 +1,7 @@
 #include <core/random.h>
 #include <core/macros.h>
 #include <cstddef>
+#include <thread>
 
 namespace {
 
@@ -220,9 +221,10 @@ void MTRand_int32::seed(const unsigned long* array, int size) { // init by array
 namespace rt {
 
 float random() {
+	//THREADLOCAL
 	static THREADLOCAL MTRand* randomGenerator=0;
     if (!randomGenerator)
-        randomGenerator = new MTRand();
+        randomGenerator = new MTRand(std::hash<std::thread::id>()(std::this_thread::get_id()));
 	return static_cast<float>((*randomGenerator)());
 }
 

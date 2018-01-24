@@ -1,6 +1,7 @@
 #ifndef VCDR_UTIL_HEADER
 #define VCDR_UTIL_HEADER
 #include <core/scalar.h>
+#include <math.h>
 namespace rt
 {
 	template<typename T>
@@ -19,6 +20,9 @@ namespace rt
 
 	float fract(float x);
 
+	float smoothstep(float a, float b, float x);
+
+	
 }
 
 #endif

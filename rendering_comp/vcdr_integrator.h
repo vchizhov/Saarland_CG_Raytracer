@@ -1,18 +1,13 @@
 #ifndef VCDR_INTEGRATOR_HEADER
 #define VCDR_INTEGRATOR_HEADER
- 
+#include <rendering_comp/vcdr_vec.h>
+#include <rendering_comp/vcdr_world.h>
 namespace rt
 {
-	class VCDR_World;
-	class Ray;
-	class RGBColor;
 	class VCDR_Integrator
 	{
 	public:
-		VCDR_Integrator(VCDR_World* world);
-		virtual RGBColor getRadiance(Ray& ray) const = 0;
-	private:
-		VCDR_World* world;
+		virtual vec3 getColor(vec3 ro, vec3 rd, const VCDR_World* world) const = 0;
 	};
 }
 
